@@ -1,0 +1,108 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  display: flex;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+#filter {
+  display: block;
+  margin: 15px auto;
+  width: 85%;
+}
+
+h4 {
+  text-align: center;
+}
+
+#windowpic {
+  width: 40%;
+}
+
+#windowinfo{
+  width: 60%;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+#listitem{
+  margin: 0px;
+  border-bottom-style: solid;
+  border-width: 1px;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+}
+
+.hidden{
+    display: none;
+}
+
+#api{
+  font-size: 10px;
+  text-align: center;
+  bottom: 0;
+  right: 0;
+}
+
+@media screen and (min-width: 550px){
+  .icon{
+    display: none;
+  }
+
+  .listicon{
+    display: none;
+  }
+
+  .list{
+    display: block;
+    width: 300px;
+    background-color: #999999;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (max-width: 549px){
+  .showList{
+    display: block;
+    width: 300px;
+    background-color: #999999;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .icon{
+    display: block;
+    position: absolute;
+    right: 85%;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+
+  .listicon{
+    display: block;
+    height: 24px;
+    width: 24px;
+    margin: 15px 10px;
+  }
+
+  #windowpic{
+    width: 0%;
+  }
+}
