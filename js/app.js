@@ -37,7 +37,7 @@ var viewModel = function(){
   // URL constructors for Foursquare API
   var client_id = 'CNO4BBZXFKVWTKML2JBAY2B01F4WIV1OJ0YPI344SOV3PGUG';
   var client_secret = '00GN5FKE4VL3D3QQIT530NMLFQF2LSPMKYX1S5VUHWUV5UW4';
-  var foursquare = 'https://api.foursquare.com/v2/venues/';
+  var foursquare = 'https://api.four4square.com/v2/venues/';
   var token = '?&client_id=' + client_id + '&client_secret=' + client_secret + '&v=20180411';
 
   // Populating markers using observable array
@@ -56,7 +56,7 @@ var viewModel = function(){
     $.ajax({
       url: url2,
       method: "GET",
-      // Success function creates infowindow content HTML string
+      // Success function creates infowindow HTML
       // Leaves blanks where there is no returned data for specific fields
       success: function(data){
         if (data){
@@ -101,26 +101,26 @@ var viewModel = function(){
                 + data.response.venue.hours.timeframes[h].open[0].renderedTime + '</br>';
             }          }
           windowcontent += "</div></br></div>"
-          self.markers.push(marker);
-          // Push marker into spots observable array
-          spotItem.marker = marker;
-          // Listner for marker
-          google.maps.event.addListener(marker, 'click', function(){
-            infowindow.open(map, marker);
-            infowindow.setContent(windowcontent);
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function(){
-              marker.setAnimation(null);
-            }, 750);
-          });
         }
       },
       // Set infowindow to string if there is an error connecting to the API
       error: function(e){
-        infowindow.setContent("Error retrieving data.")
+        windowcontent = "Could not retrieve information from Foursquare. Try again later."
       }
     });
-
+    // Push marker into this.markers
+    self.markers.push(marker);
+    // Push marker into spots observable array
+    spotItem.marker = marker;
+    // Listner for marker
+    google.maps.event.addListener(marker, 'click', function(){
+      infowindow.open(map, marker);
+      infowindow.setContent(windowcontent);
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function(){
+        marker.setAnimation(null);
+      }, 750);
+    });
   });
 
   // Event trigger for list element
@@ -202,6 +202,10 @@ var viewModel = function(){
   // Toggle function assigned to hamburger icons
   this.toggleMenu = function(){
     self.mobile(!self.mobile());
+  };
+
+  this.mapError = function(){
+    document.getElementById('error').innerHTML = "<h1>Google Maps is not loading. Try again later.</h1>";
   };
 }
 
