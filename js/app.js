@@ -53,6 +53,8 @@ var viewModel = function(){
 
     // Creating URL for AJAX request
     var url2 = foursquare + spotItem.id() + token;
+    // Initializing windowcontent Variable
+    var windowcontent = '';
     $.ajax({
       url: url2,
       method: "GET",
@@ -60,7 +62,6 @@ var viewModel = function(){
       // Leaves blanks where there is no returned data for specific fields
       success: function(data){
         if (data){
-          var windowcontent = '';
           if (data.response.venue.name){
             windowcontent += '<h4>' + data.response.venue.name + '</h4>'
             spotItem.name(data.response.venue.name);
