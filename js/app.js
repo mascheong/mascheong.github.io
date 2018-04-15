@@ -37,7 +37,7 @@ var viewModel = function(){
   // URL constructors for Foursquare API
   var client_id = 'CNO4BBZXFKVWTKML2JBAY2B01F4WIV1OJ0YPI344SOV3PGUG';
   var client_secret = '00GN5FKE4VL3D3QQIT530NMLFQF2LSPMKYX1S5VUHWUV5UW4';
-  var foursquare = 'https://api.four4square.com/v2/venues/';
+  var foursquare = 'https://api.foursquare.com/v2/venues/';
   var token = '?&client_id=' + client_id + '&client_secret=' + client_secret + '&v=20180411';
 
   // Populating markers using observable array
