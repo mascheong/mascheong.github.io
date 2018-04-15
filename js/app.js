@@ -204,10 +204,6 @@ var viewModel = function(){
   this.toggleMenu = function(){
     self.mobile(!self.mobile());
   };
-
-  this.mapError = function(){
-    document.getElementById('error').innerHTML = "<h1>Google Maps is not loading. Try again later.</h1>";
-  };
 }
 
 
@@ -220,4 +216,9 @@ function initMap(){
     mapTypeControl: false
   });
   ko.applyBindings(new viewModel());
+}
+
+//Error function on Google Maps error
+function mapError(){
+  document.getElementById('error').innerHTML = "<h1>Google Maps is not loading. Try again later.</h1>";
 }
